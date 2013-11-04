@@ -145,7 +145,8 @@ such the Organizational name, city, state, etc.
 
 
 You need to publish the CA's public certificate and CRL somehere.  I use `ca`.
-(`ca.example.com`). In the above example, we used the configuration file `ca.example.com.cnf`
+(`ca.example.com`). In the above example, we used the configuration file
+`ca.example.com.cnf`
 
 
 
@@ -184,7 +185,7 @@ Production Deployment
 
 The convention is to deploy `vcert` on server named `console` (e.g. `console.example.com`). 
 Please refer to Django's documentation for more information on deploying Django
-on Django. https://docs.djangoproject.com/en/dev/howto/deployment/
+https://docs.djangoproject.com/en/dev/howto/deployment/
     
     
     
