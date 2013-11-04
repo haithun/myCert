@@ -20,10 +20,10 @@ subjectAltName          = @alt_names
 authorityKeyIdentifier  = keyid:always,issuer:always
 basicConstraints        = critical, CA:true
 keyUsage                = keyCertSign, cRLSign
-crlDistributionPoints   = URI:http://ca.directca.org/crl/direct-ca-crl.pem
+crlDistributionPoints   = URI:http://ca.example.com/crl/example-crl.pem
 
 [alt_names]
-DNS.1                   = ca.directca.org
+DNS.1                   = ca.example.com
 
 [ ca ]
 default_ca              = CA_default
@@ -58,10 +58,10 @@ basicConstraints        = CA:FALSE
 subjectAltName          = email:copy
 subjectKeyIdentifier    = hash
 authorityKeyIdentifier  = keyid:always #, issuer:always
-nsCaRevocationUrl       = http://ca.directca.org/crl/direct-ca-crl.pem
+nsCaRevocationUrl       = http://ca.example.com/crl/example-crl.pem
 keyUsage                = digitalSignature, keyEncipherment
-crlDistributionPoints   = URI:http://ca.directca.org/crl/|ANCHORDNS|.crl, URI:http://rcsp.directca.org/|SERIAL|.json
-authorityInfoAccess     = caIssuers;URI:http://pubcerts.directca.org/x5c/|SERIAL|-x5c.json
+crlDistributionPoints   = URI:http://ca.example.com/crl/|ANCHORDNS|.crl, URI:http://rcsp.example.com/|SERIAL|.json
+authorityInfoAccess     = caIssuers;URI:http://pubcerts.example.com/x5c/|SERIAL|-x5c.json
 
 [ crl_ext ]
 authorityKeyIdentifier  = keyid:always,issuer:always

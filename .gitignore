@@ -19,3 +19,4 @@ vcert/settings_local.py
 apps/certificates/ca/crl/
 .idea/
 apps/certificates/ca/tmp/
+ca.directca.org.cnf
