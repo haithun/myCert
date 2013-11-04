@@ -35,19 +35,18 @@ Installation - Part 1
 ---------------------
 
 `vcert` has a number of dependencies including OpenSSL, Python,
-and Django.  This software was tested with OpenSSL version 1.0.1, Python 2.7
-and Django 1.5.  SQLite is the default database and it was  tested
-with SQLite version 3.  The following instructions assume Ubuntu 13.04 is the
+and Django. This software was tested with OpenSSL version 1.0.1, Python 2.7
+and Django 1.5. SQLite is the default database and it was  tested
+with SQLite version 3. The following instructions assume Ubuntu 13.04 is the
 operating system, but it is possible to use others. (If anyone wants to
 contribute Windows, Mac, or other operating system instructions please do so.)
 
 
 Here is how to get started on Ubuntu 13.04. From the terminal, start by
-installing OpenSSL. This is likely already installed, but installation instructions
-are added here for clarity.
+installing OpenSSL. This is likely already installed, but installation
+instructions are added here for clarity.
 
     sudo apt-get install openssl
-
 
 Now install pip and make sure its up to date.
 
@@ -55,11 +54,7 @@ Now install pip and make sure its up to date.
     sudo pip install --upgrade pip
     
 
-Install git so to fetch the repository.  You can get this project in pypy
-(`pip install vcert`) if you need that, but its often a lot easier to work
-with a Django project by downloading it your local directory.  We will show
-how to fetch it from GitHub. Install git and then clone the master
-repository.
+Install git and then clone the master repository.
 
     sudo apt-get install git-core
     git clone https://github.com/videntity/vcert.git
