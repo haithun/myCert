@@ -1,5 +1,5 @@
-README for vcert
-================
+README
+======
 
 `vcert`  A web-based certificate authority mangement system built atop OpenSSL.
 
