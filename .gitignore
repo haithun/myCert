@@ -20,3 +20,4 @@ apps/certificates/ca/crl/
 .idea/
 apps/certificates/ca/tmp/
 ca.directca.org.cnf
+ca.example.com.pem
