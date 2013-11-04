@@ -42,7 +42,7 @@ simpleS3.py
 
 #Set these to match your Amazon S3 Account
 AWS_ACCESS_KEY= '*****PUT_YOUR_KEY_HERE****'
-AWS_SECRET_ACCESS_KEY='*****PUT_YOUR_SECRET_KEY_HERE****'
+AWS_SECRET_ACCESS_KEY_ACCESS_KEY='*****PUT_YOUR_SECRET_KEY_HERE****'
 
 
 
@@ -60,8 +60,8 @@ class SimpleS3:
 
         try:
             
-            conn = S3Connection(settings.AWS_KEY,
-                                   settings.AWS_SECRET)
+            conn = S3Connection(settings.AWS_ACCESS_KEY_ID,
+                                   settings.AWS_SECRET_ACCESS_KEY)
          
             b = conn.get_bucket(bucket_name)
             k = Key(b)
@@ -86,8 +86,8 @@ class SimpleS3:
             """Store a file in s3"""
             url=""
             try:
-                conn= S3Connection(settings.AWS_KEY,
-                                   settings.AWS_SECRET)
+                conn= S3Connection(settings.AWS_ACCESS_KEY_ID,
+                                   settings.AWS_SECRET_ACCESS_KEY)
                 try:
                     b = conn.create_bucket(bucket)
                 except(S3CreateError):
@@ -129,8 +129,8 @@ class SimpleS3:
                      public=False, presigned_seconds = 604800):
             url=""
             try:
-                conn= S3Connection(settings.AWS_KEY,
-                                   settings.AWS_SECRET)
+                conn= S3Connection(settings.AWS_ACCESS_KEY_ID,
+                                   settings.AWS_SECRET_ACCESS_KEY)
                 b = conn.get_bucket(bucket)
                 k=Key(b)
                 k.key=filename
@@ -171,7 +171,7 @@ class SimpleS3:
             retval = False
             try:
                 conn= S3Connection(AWS_ACCESS_KEY,
-                                   AWS_SECRET_ACCESS_KEY)
+                                   AWS_SECRET_ACCESS_KEY_ACCESS_KEY)
 
                 b = conn.get_bucket(bucket)
                 k = Key(b)
