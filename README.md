@@ -4,8 +4,8 @@ README for vcert
 `vcert`  A web-based certificate authority mangement system built atop OpenSSL.
 
 Copyright Alan Viars 2013
-License: GPL v2. See license.txt
 
+Open Source License: MPL See LICENSE.txt
 
 Last Updated: November 4, 2013
 
@@ -28,11 +28,11 @@ Project's Applicability Statement. Perhaps you are not working in Health IT at
 all and are just looking for a simple way to manage certificates.  You may well
 be able to use this project for that purpose.
 
-CONTRIBUTIONS & PULL REQUEST WELCOME! 
+CODE CONTRIBUTIONS & PULL REQUEST WELCOME! 
 
     
-Installation - Part 1
----------------------
+Installation Part 1 - Download and Initial Setup
+------------------------------------------------
 
 `vcert` has a number of dependencies including OpenSSL, Python,
 and Django. This software was tested with OpenSSL version 1.0.1, Python 2.7
@@ -86,23 +86,22 @@ Now copy settings_local_example.py to settings_example.py.
     cp settings_local_example.py settings_example.py
 
 
-
-You can at this point try out the server at this point with `python manage.py runserver`,
-but your settings_local.py settings will need to be customized before everything will
-work as expected. 
-
-
-Installation - Part 2
----------------------
-
-The file `settings.py` contains default settings, where the file `settings_local.py`
-add and overwrites what is in `settings.py` via a Python imports,
-
 You can at this point try out the server at this point with
 `python manage.py runserver`, but your settings_local.py settings will need to
-be customized before everything will work as expected. Change `exmaple.com` to
-suit your own domain.  you'll aslo want to setup email settings for outgoing email
-notifications and setup web locations for publishing certificates and CRLs.
+be customized before everything will work as expected. 
+
+
+Installation Part 2 - Django Settings
+-------------------------------------
+
+The file `settings.py` contains default settings, where the file
+`settings_local.py` add and overwrites what is in `settings.py` via Python
+imports.
+
+
+One of the main changes is replacing `examaple.com` with your own domain. You'll
+also want to setup email settings for outgoing email notifications and setup web
+locations for publishing certificates and CRLs.
 
 
 Certificates and CRLs get published via Amazon Web Service's (AWS) Simple
@@ -123,8 +122,8 @@ on what the various settings do.
 
 
 
-Installlation - Part 3
-----------------------
+Installlation Part 3 - OpenSSL CA Configuration
+-----------------------------------------------
 
 There are stil a few of items that need to be addressed:
 
@@ -134,8 +133,9 @@ Create and/or install the root CA's (or subordinate certificate's) private
 certificate and change settings_local.py accordingly.  Here is how to generate a
 new CA keypair with a password on the pricate key.  It assumes the domain
 `ca.example.com` and uses the configuration file
-`/opt/ca/conf/ca.example.com.cnf`. You will likely want to make adjustment there
-such the Organizational name, city, state, etc.
+`/opt/ca/conf/ca.example.com.cnf`. Before this next step,  you will likely want
+to make adjustment there such the changing "example.com" to your domain, setting
+organizational name, city, state, and so on.  Here are the step.
 
 
 
@@ -146,11 +146,10 @@ such the Organizational name, city, state, etc.
 You will end up with the CA's public key in '/opt/ca/public' and the private key
 in '/opt/ca/private'.
 
-You need to publish the CA's public certificate and CRL somehere.  I use `ca`.
-(`ca.example.com`). In the above example, we used the configuration file
-`ca.example.com.cnf`.  You can use openssl command line to create the CRL for
-your CA.
-
+You need to publish the CA's public certificate and CRL somehere.  `ca`
+(e.g. `ca.example.com`) is a reasonable place. In the above example, we used
+the configuration file `ca.example.com.cnf`.  You can use openssl command line
+to create the CRL for your CA.
 
 
 
@@ -171,13 +170,12 @@ and the output of this operation is written to `/home/ubuntu/crl.log`. Adjust
 these paths to fit your local environment.  With this setting we are updating
 the CRLs every 30 minutes.  Note that each "Trust Anchor" has its own CRL.
 
-
     
     
 Run the Application
 -------------------
 
-Now you can run the `vcert` in development mode
+Now you can run the `vcert` in development mode:
 
     python manage.py runserver
 
@@ -206,7 +204,7 @@ certificates) you need to give access to the Django admin to said user.
 (`http://127.0.0.1:8000/admin` in a development
 configuration). You can so this in two ways:
 
-1. either make this user a superuser with access to all models
+1. Make this user a superuser (with access to all models).
 2. Set the is_staff flag and enable access on the `Certificate` models.
 
 See https://docs.djangoproject.com/en/dev/topics/auth/ for more information on
@@ -229,13 +227,17 @@ certificates are published at a secret, temporary URL, and an email notification
 is sent to the person requesting a certificate.
 
 
-As written `vcert` requires an invitation code to create an account.  this is
-also accomplished in the Django admin. Click the section that says "Invitations"
-under "Accounts", then click "Add invitation", provide an invitation code and the
-email to which it should be sent.  Click "Save" and an email with the code will
-be sent.  Anyone can use the code.  In other words, it does not require the new
-user to use the email in the invitation to register.
+As written, `vcert` requires an invitation code to create an account.  This is
+accomplished in the Django admin. Click the section that says "Invitations"
+under "Accounts", then click "Add invitation", then provide an invitation code
+and the email to which it should be sent.  Click "Save" and an email with the
+code will be sent.  Anyone can use the invitation code.  In other words, it does
+not require the new user to use the email in the invitation to register.
 
+
+Happy CA-ing!
+
+@aviars
 
 
     
