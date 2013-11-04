@@ -218,13 +218,16 @@ Operation
 "Trust anchor".  A trust anchor is the child certificate of the `vcerts`
 certificate with signing authority. (Remember this is configured in
 settings_local.py) After the Trust anchor request is made an email is sent to
-the CA's verifier (which is defined in `CA_VERIFIER_EMAIL` in
-`settings_local.py`). what you do for "verification" is up to you.  After the
+the CA's verifier (`CA_VERIFIER_EMAIL` in`settings_local.py`).
+
+What you do for "verification" is up to you.  After the
 verifier verifies the information, then the verifier finds the certificate in
 question within the Django admin, checks the "verify" box and then clicks save.  
-When this happens, the public certificates are publicly published, the private
-certificates are published at a secret, temporary URL, and an email notification
-is sent to the person requesting a certificate.
+(How you do verification is up to you).  When this happens, certificates are
+published and an email notification is sent to the person requesting the
+certificate.  Then the user may create leaf nodes off of the Trust Archor from
+his or her account.  These, too, go through the same verification notification
+and verification process before they may be accessed by the requestor. 
 
 
 As written, `vcert` requires an invitation code to create an account.  This is
