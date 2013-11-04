@@ -143,10 +143,13 @@ such the Organizational name, city, state, etc.
     openssl req -nodes -config conf/ca.example.com.cnf -days 7330 -x509 -newkey rsa:4096 -out public/ca.example.com.pem -outform PEM
     openssl rsa -des3 -in ./private/ca.example.comKey.pem -out ./private/ca.example.comKey.pem
 
+You will end up with the CA's public key in '/opt/ca/public' and the private key
+in '/opt/ca/private'.
 
 You need to publish the CA's public certificate and CRL somehere.  I use `ca`.
 (`ca.example.com`). In the above example, we used the configuration file
-`ca.example.com.cnf`
+`ca.example.com.cnf`.  You can use openssl command line to create the CRL for
+your CA.
 
 
 

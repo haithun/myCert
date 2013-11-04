@@ -62,9 +62,10 @@ CA_CRL_DIR = os.path.join( CA_BASE_DIR, 'crl/' )
 
 # change to point to the CA's public certificate
 CA_PUBLIC_CERT   = os.path.join( CA_BASE_DIR, 'public/', "ca.example.com.pem" )
-
 # This file is the main settings 
-CA_MAIN_CONF    = os.path.join( CA_CONF_DIR , "ca.example.com.cnf")
+CA_MAIN_CONF    = os.path.join( CA_CONF_DIR , "ca.directca.org.cnf")
+#The password on the Root CA's private certificate. This is set in install step 3.
+PRIVATE_PASSWORD    = "ChangeMe!"
 
 
 CA_VERIFIER_EMAIL = "verifier@example.com"
